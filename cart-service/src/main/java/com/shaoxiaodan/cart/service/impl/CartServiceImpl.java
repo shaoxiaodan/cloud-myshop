@@ -34,7 +34,7 @@ public class CartServiceImpl implements CartService {
 
 	@Override
 	public List<Cart> queryMyCarts() {
-		// 分布式远程调用
+		// Distributed remote invocation
 		List<Item> items = itemClient.queryTop10Item();
 		System.out.println("client::queryMyCarts-->items=" + items);
 		return null;
