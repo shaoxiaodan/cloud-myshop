@@ -1,0 +1,51 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: item-service
+  profiles:
+    active: local
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://${db.host}:${db.port}/myshop-item?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&serverTimezone=Asia/Shanghai
+#    username: ${db.name}
+#    password: ${db.pwd}
+    url: jdbc:mysql://192.168.84.100:3306/myshop-item?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+    hikari:
+      maximum-pool-size: 10
+      connection-timeout: 15000
+  cloud:
+    nacos:
+      server-addr: 127.0.0.1:8848
+## mybatis configuration
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl  # print sql
+    map-underscore-to-camel-case: true
+    cache-enabled: false  # cache
+## logging configuration
+logging:
+  level:
+    com.shaoxiaodan: debug
+  pattern:
+    dateformat: HH:mm:ss:SSS
+  file:
+    path: "logs/${spring.application.name}"
+## swagger(openapi 2 for springboot 2x)
+knife4j:
+  enable: true
+  openapi:
+    title: Cloud-MyShop Api docs
+    description: "shopping item service API doc"
+    email: shaoxiaodan1009@gmail.com
+    concat: Xiaodan Shao(Daniel)
+    url: https://www.shaoxiaodan.com.cn
+    version: v1.0.0
+    group:
+      default:
+        group-name: default
+        api-rule: package
+        api-rule-resources:
+          - com.shaoxiaodan.item.controller

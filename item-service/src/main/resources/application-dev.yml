@@ -1,0 +1,5 @@
+db:
+  host: c_mysql  # mysql service name in docker
+  port: 3306
+  name: root
+  pwd: 123456

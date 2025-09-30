@@ -1,0 +1,5 @@
+db:
+  host: 192.168.84.100 # vm machine ip address
+  port: 3306
+  name: root
+  pwd: 123456
